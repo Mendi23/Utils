@@ -134,3 +134,9 @@ matplotlib.animation.FuncAnimation(...) # animation of iterative process
 * update all states variables in one line: `count, end = count+1, False`
 * raise exceptions freely for anything which is not output=f(input)
 * document your code in doc-strings (top of function/module) so it'll be captured in python's built-in `__doc__` attribute 
+
+## Articles
+* [creating jupyter GUI](https://medium.com/@jdchipox/how-to-interact-with-jupyter-33a98686f24e)
+* [python on raspberry pi](https://realpython.com/python-raspberry-pi/)
+* [manipulating PDF](https://realpython.com/creating-modifying-pdf/)
+* [scheduling, corntabs etc.](https://martinheinz.dev/blog/39?utm_source=rss&utm_medium=referral&utm_campaign=blog_post_39)

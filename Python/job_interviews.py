@@ -1,3 +1,6 @@
+from itertools import accumulate, filterfalse
+
+
 def reverse_integer(i):
     """
     Given an integer, return the integer with reversed digits.
@@ -64,3 +67,43 @@ def valid_palindrome(s):
         if t == t[::-1]: return True
     return s == s[::-1]
 
+def alignment_problen(s1, s2):
+    """paper: https://upload.wikimedia.org/wikipedia/en/c/c4/ParallelNeedlemanAlgorithm.pdf"""
+
+    # parameters 
+    GAP_SCORE = -1
+    MISMATCH_SCORE = -2
+    MATCH_SCORE = 1
+
+    # initialization
+    score = [[None]*(len(s2)+1) for _ in range(len(s1)+1)]
+
+    for i in range(len(s2)+1):
+        score[0][i] = i*GAP_SCORE
+    
+    for i in range(len(s1)+1):
+        score[i][0] = i*GAP_SCORE
+
+    # dynamic programing
+    directions = []
+    for i in range(1, len(s1)+1):
+        directions.append([])
+        for j in range(1, len(s2)+1):
+            d, max_score = (max(
+                ((0,-1), score[i][j-1] + GAP_SCORE),
+                ((-1,0), score[i-1][j] + GAP_SCORE),
+                ((-1,-1), score[i-1][j-1] + (MATCH_SCORE if s1[i-1]==s2[j-1] else MISMATCH_SCORE)),
+                key = lambda x: x[1]
+            ))
+            score[i][j] = max_score
+            directions[i-1].append(d)
+    
+    # getting best sequence from direction
+    seq = []
+    i, j = len(s1), len(s2)
+    while any((i, j)):
+        d = directions[i-1][j-1]
+        i, j = i+d[0], j+d[1]
+        seq.append((s1[i] if d[0] else None, s2[j] if d[1] else None))
+    
+    return seq[::-1]

@@ -388,7 +388,8 @@ def say_someting(s: str):
         # sudo apt install speech-dispatcher
         os.system('spd-say '+s)
 
-get_attrs = lambda o: (getattr('Method' if callable(a) else 'Attribute', o, a) for a in dir(o) if not a.startswith('_'))
+get_attrs = lambda o: list(('Method' if callable(getattr(o, a)) else 'Attribute', a) for a in dir(o) if not a.startswith('__'))
+
 
 import os
 for filename in os.listdir(dir_name):
