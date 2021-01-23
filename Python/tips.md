@@ -135,6 +135,9 @@ matplotlib.animation.FuncAnimation(...) # animation of iterative process
 * raise exceptions freely for anything which is not output=f(input)
 * document your code in doc-strings (top of function/module) so it'll be captured in python's built-in `__doc__` attribute 
 
+## Projects
+* [create QR code](https://github.com/raatmarien/my-qr.art)
+
 ## Articles
 * [creating jupyter GUI](https://medium.com/@jdchipox/how-to-interact-with-jupyter-33a98686f24e)
 * [python on raspberry pi](https://realpython.com/python-raspberry-pi/)
