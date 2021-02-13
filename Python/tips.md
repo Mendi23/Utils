@@ -8,6 +8,8 @@ x, y = y, x+y # t = x+y; x = y; y = t
 for i in islice(items, 10) # for j,i in enumerate(items):; if i == 10: break
 yield from func(...) # for i in func(...): yield i
 l[::i] # every i'th value of l
+a = l[:] # a = l.copy()
+a = l[::-1] # a = reversed(l)
 head, *tail = co # head, tail = co[1], co[1:]
 (a, b)[int(f(x))].append(y) # if f(x): a.append(y); else: b.append(y)
 [j for i in iter1 for j in fun_iter(i)] # res=[]; for i in iter1: for j in fun_iter(i); res.append(j) 
@@ -33,6 +35,12 @@ getattr, hasattr, setattr # allows dynamic attributes
 compile(source, filename, mode) # compile a string to code (in order to execute it)
 divmod(a,b) # returns both quotient and remainder
 chr, ord # map integer and unicode characters
+# str function
+str.partition(sub_string) # better than using str.split when splitting in two
+str.count(sub_string) # count occurrences in string
+str.zfill(length) # left-pad with zeroes
+str.title() # capitalize first letter of each word
+def f(): pass; f.x = 5 # function attributes can be used for internal states
 ```
 
 ## itertools
@@ -111,6 +119,10 @@ matplotlib.animation.FuncAnimation(...) # animation of iterative process
     * `dearpygui` - GUI framework
 * ### Dev
     * `Scalene` - resources profiler
+    * `dis` - disassembler for cPython
+* ### data structures
+    * `funct` - Array data structure. like `list`, just better
+    * `bisect` - helper function for sorted list (uses binary search for everything)
 * `imaplib` - control your email account
 * `youtube-dl` - download from youtube
 * `pydub` - audio proccessing. from video, manipulate, transcribe, etc.

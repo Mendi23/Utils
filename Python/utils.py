@@ -1,4 +1,5 @@
 from itertools import tee
+from typing import Iterable
 def split_on_condition(seq, condition):
     l1, l2 = tee((condition(item), item) for item in seq)
     return (i for p, i in l1 if p), (i for p, i in l2 if not p)
@@ -295,7 +296,7 @@ def run_flask_with_sched():
     def OnExitApp(user):
         sched.shutdown()
         print("exit Flask application")
-    atexit.register(OnExitApp, user='Ng Wai Foong')
+    atexit.register(OnExitApp, user='user')
     
     app = create_flask_app()
     app.run(host="0.0.0.0")#, debug=True)
@@ -390,9 +391,41 @@ def say_someting(s: str):
 
 get_attrs = lambda o: list(('Method' if callable(getattr(o, a)) else 'Attribute', a) for a in dir(o) if not a.startswith('__'))
 
+def remove_prefix(dir_name):
+    import os
+    for filename in os.listdir(dir_name):
+        pre, suf = filename.split(' ',1) 
+        new_name = f'{pre:0>3}' + ' ' + suf
+        os.rename(os.path.join(dir_name, filename), os.path.join(dir_name, new_name))
 
-import os
-for filename in os.listdir(dir_name):
-    pre, suf = filename.split(' ',1) 
-    new_name = f'{pre:0>3}' + ' ' + suf
-    os.rename(os.path.join(dir_name, filename), os.path.join(dir_name, new_name))
+
+def breadth_first_search(start, is_goal, get_neighbors):
+    """BFS for a graph. credit": https://johnlekberg.com/blog/2020-01-01-cabbage-goat-wolf.html"""
+    parent = dict()
+    to_visit = [start]
+    discovered = set([start])
+
+    while to_visit:
+        vertex = to_visit.pop(0)
+
+        if is_goal(vertex):
+            path = []
+            while vertex is not None:
+                path.insert(0, vertex)
+                vertex = parent.get(vertex)
+            return path
+
+        for neighbor in get_neighbors(vertex):
+            if neighbor not in discovered:
+                discovered.add(neighbor)
+                parent[neighbor] = vertex
+                to_visit.append(neighbor)
+
+from typing import Iterable
+def pprint_iterable(d: Iterable, indent=0):
+  print(' - ' * indent)
+  for i in d:
+    if isinstance(i, Iterable):
+       pprint_iterable(i, indent+1)
+    else:
+     print(' - ' * (indent+1) + str(i))

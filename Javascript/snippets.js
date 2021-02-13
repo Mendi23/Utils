@@ -10,5 +10,10 @@ function logger(target, name, descriptor) { // logger decorator (for nodejs)
     };
     descriptor.value = newFn;
     return descriptor;
-  }
+}
 
+function* func_to_iter(func, stop=null) {
+  while ((i = func()) !== stop) {
+    yield i;
+  }
+}
