@@ -35,12 +35,13 @@ getattr, hasattr, setattr # allows dynamic attributes
 compile(source, filename, mode) # compile a string to code (in order to execute it)
 divmod(a,b) # returns both quotient and remainder
 chr, ord # map integer and unicode characters
-# str function
+# str functions
 str.partition(sub_string) # better than using str.split when splitting in two
 str.count(sub_string) # count occurrences in string
 str.zfill(length) # left-pad with zeroes
 str.title() # capitalize first letter of each word
 def f(): pass; f.x = 5 # function attributes can be used for internal states
+
 ```
 
 ## itertools
