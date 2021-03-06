@@ -1,3 +1,5 @@
+from typing import Iterable, List, Set, Tuple, Union
+
 def reverse_integer(i):
     """
     Given an integer, return the integer with reversed digits.
@@ -138,3 +140,53 @@ def permutation_rank_problem(s: str):
 
     return res + 1
 
+def caesar_cipher_1(s: str, n: int) -> str:
+    hashed = lambda c: chr((ord(c) + n - ord('a')) % 26 + ord('a'))
+    return ''.join(hashed(c) if c.islower() else c for c in s)
+
+def sudoko_solver(board: str) -> str:
+    from itertools import chain, product
+    Board = List[List[int]]
+
+    def sdm_to_lists(s: str) -> Board:
+        return [list(int(i) for i in s[i * 9:(i*9) + 9]) for i in range(9)]
+
+
+    def get_square_indexes(i: int, j: int) -> Iterable[Tuple[int, int]]:
+        sq_row, sq_col = (i//3) * 3, (j//3) * 3
+        return product(range(sq_row, sq_row + 3), range(sq_col, sq_col + 3))
+
+    def available_digits(board: Board, i: int, j: int) -> Set[int]:
+        taken = set(
+            chain(
+                board[i], (row[j] for row in board),
+                (board[x][y] for x, y in get_square_indexes(i, j))
+                )
+            )
+        return set(range(1,10)) - taken
+
+    def solve_board(board: Board, i: int, j: int) -> Union[Board, None]:
+        new_i, new_j = (i+1, j) if j == 8 else (i, j+1)
+        if board[i][j] != 0:
+            return board if i == 8 and j == 8 else solve_board(board, new_i, new_j)
+        
+        options = available_digits(board, i, j)
+        if not options:
+            return None
+        
+        if i == 8 and j == 8:
+            board[i][j] = options.pop()
+            return board
+    
+        for num in options:
+            board[i][j] = num
+            res = solve_board(board, new_i, new_j)
+            if res is None:
+                board[i][j] = 0
+            else:
+                return res
+        return None
+
+def SED(X, Y):
+    """Compute the squared Euclidean distance between X and Y."""
+    return sum((i-j)**2 for i, j in zip(X, Y))

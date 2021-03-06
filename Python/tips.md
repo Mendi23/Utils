@@ -41,7 +41,6 @@ str.count(sub_string) # count occurrences in string
 str.zfill(length) # left-pad with zeroes
 str.title() # capitalize first letter of each word
 def f(): pass; f.x = 5 # function attributes can be used for internal states
-
 ```
 
 ## itertools
@@ -121,6 +120,7 @@ matplotlib.animation.FuncAnimation(...) # animation of iterative process
 * ### Dev
     * `Scalene` - resources profiler
     * `dis` - disassembler for cPython
+    * `reloadr` - auto reload the code. useful for debugging
 * ### data structures
     * `funct` - Array data structure. like `list`, just better
     * `bisect` - helper function for sorted list (uses binary search for everything)

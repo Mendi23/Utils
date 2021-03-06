@@ -171,7 +171,7 @@ def measure(method):
 
 from threading import Thread
 from multiprocessing import Queue
-import times
+import time
 def run_with_limited_time(func, args, kwargs, time_limit):
     """Runs a function with time limit
     :param func: The function to run.
@@ -400,7 +400,7 @@ def remove_prefix(dir_name):
 
 
 def breadth_first_search(start, is_goal, get_neighbors):
-    """BFS for a graph. credit": https://johnlekberg.com/blog/2020-01-01-cabbage-goat-wolf.html"""
+    """BFS for a graph. credit: https://johnlekberg.com/blog/2020-01-01-cabbage-goat-wolf.html"""
     parent = dict()
     to_visit = [start]
     discovered = set([start])

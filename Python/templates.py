@@ -24,11 +24,5 @@ class Meta(type):
     def __new__(cls, what, bases=None, dct=None):  
         return type.__new__(cls, what, bases, dct)
 
-import enum
-# enumeration class - special!
-class Color(enum.Enum):
-    RED = 1
-    BLUE = 2
-# Color(1) = RED, Color['RED'] = 1
 
 
