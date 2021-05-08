@@ -24,5 +24,28 @@ class Meta(type):
     def __new__(cls, what, bases=None, dct=None):  
         return type.__new__(cls, what, bases, dct)
 
+class ContextManager():
+    def __init__(self):
+        print('init method called')
+          
+    def __enter__(self):
+        print('enter method called')
+        return self
+      
+    def __exit__(self, exc_type, exc_value, exc_traceback):
+        print('exit method called')
 
+from contextlib import contextmanager
+@contextmanager
+def get_scope():
+    """Provide a transactional scope around a series of operations."""
+    item = get_items()
+    try:
+        yield item
+        item.commit()
+    except:
+        item.rollback()
+        raise
+    finally:
+        item.close()
 

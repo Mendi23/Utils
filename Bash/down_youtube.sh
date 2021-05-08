@@ -20,7 +20,7 @@ down-yt() {
     if [[ "$2" == 'audio' ]]; then
       params+=("-x" "--audio-format" "mp3" "--audio-quality" "0" "--embed-thumbnail")
     elif [[ "$2" == 'video' ]]; then
-      params+=("--add-metadata")
+      params+=("--add-metadata" "-f bestvideo+bestaudio/best")
     elif [[ "$2" == 'subs' ]]; then
       params+=("--write-auto-sub" "--sub-lang" "en,iw" "--skip-download" "--convert-subs" "srt")
     elif [[ "$2" == 'sub-vid' ]]; then
@@ -32,7 +32,8 @@ down-yt() {
     params+=("${@:3}")
     youtube-dl "${params[@]}"
 }
-down-yt channel video --write-description --playlist-items 137,186,270-332 -f 'bestvideo[height>=720]+bestaudio/best' https://www.youtube.com/c/KingsandGenerals 
+down-yt single video https://www.youtube.com/watch?v=I3ty8X9ozX4
+# down-yt channel video --write-description --playlist-items 137,186,270-332 -f 'bestvideo[height>=720]+bestaudio/best' https://www.youtube.com/c/KingsandGenerals 
 # --ffmpeg-location LOC
   # Playlist Selection:
     # --playlist-start NUMBER          Playlist video to start at (default is 1)

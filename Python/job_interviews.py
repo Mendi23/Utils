@@ -1,4 +1,4 @@
-from typing import Iterable, List, Set, Tuple, Union
+from typing import Callable, Iterable, List, Set, Tuple, Union
 
 def reverse_integer(i):
     """

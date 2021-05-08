@@ -354,6 +354,19 @@ import pandas as pd
 def all_csvs_to_dataframe(path):
     return pd.contact(pd.read_csv(f) for f in path.glob("*.csv"))
 
+import pandas as pd
+class CsvPandas:
+    def __init__(self, filepath) -> None:
+        self.filepath = filepath
+        self._df = pd.read_csv(filepath)
+    
+    def __call__(self):
+        return self._df
+    
+    def __del__(self):
+        self._df.to
+
+
 from collections import Counter, OrderedDict
 class OrderedCounter(Counter, OrderedDict):
     pass
@@ -429,3 +442,9 @@ def pprint_iterable(d: Iterable, indent=0):
        pprint_iterable(i, indent+1)
     else:
      print(' - ' * (indent+1) + str(i))
+
+from typing import Iterable, Union
+def test_regex(pattern: str, s: str) -> Union[None, str]:
+    import re
+    res = re.search(pattern, s)
+    return res[0] if res is not None else None

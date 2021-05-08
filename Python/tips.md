@@ -14,6 +14,7 @@ head, *tail = co # head, tail = co[1], co[1:]
 (a, b)[int(f(x))].append(y) # if f(x): a.append(y); else: b.append(y)
 [j for i in iter1 for j in fun_iter(i)] # res=[]; for i in iter1: for j in fun_iter(i); res.append(j) 
 s.rsplitp(sep)[-1] # s.splitp(sep)[-1]
+a == b == c != d > e # can have multiple comparisons
 ```
 
 ## New commands

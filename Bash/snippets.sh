@@ -6,3 +6,6 @@ read -a s <<< "$@" # arguments into array
 grep -Eoi '<A [^>]+>' file | grep -Eoi 'HREF="[^\"]+"' |  grep -Eo '(http|https)://[^"]+') # get links from html file
 rsync -avh <source> <dst> # merge folders 
 man -K <keyword> # search in man pages for keyword
+pip uninstall -y -r <(pip freeze) # reset all pip packages
+find -name <regex-like>
+# CTRL+ALT+E -  expand alias

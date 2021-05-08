@@ -1,6 +1,8 @@
 
 def regex_flags():
     import re
+    
+    re.split("[,.:]", s) # split multiple 
 
     re.X # allow comments and multiline patterns 
     pattern = """(?x)
@@ -8,6 +10,8 @@ def regex_flags():
     [ ]+
     to [ ]+ [0-9:]+    # end time
     """
+
+    "\s - whitespace"
 
     re.I # ignorecase
 
