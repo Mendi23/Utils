@@ -8,4 +8,5 @@ rsync -avh <source> <dst> # merge folders
 man -K <keyword> # search in man pages for keyword
 pip uninstall -y -r <(pip freeze) # reset all pip packages
 find -name <regex-like>
+pkill -f <my_pattern> # kill proccess with partial name
 # CTRL+ALT+E -  expand alias

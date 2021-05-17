@@ -17,3 +17,9 @@ function* func_to_iter(func, stop=null) {
     yield i;
   }
 }
+
+function pick(obj, props) {
+  var picked = {};
+  props.forEach(prop => {picked[prop] = obj[prop]});
+  return picked;
+}
