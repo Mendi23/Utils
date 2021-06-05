@@ -9,4 +9,8 @@ man -K <keyword> # search in man pages for keyword
 pip uninstall -y -r <(pip freeze) # reset all pip packages
 find -name <regex-like>
 pkill -f <my_pattern> # kill proccess with partial name
+ffmpeg -i '<input>' -filter:a "atempo=2.0" -vn 'output' # change audio speed. limited to using values between 0.5 and 2.0, for more: "atempo=2.0,atempo=2.0"
+if compgen -G <pattern> > /dev/null; then ... done; # check file existence with wildcards!
 # CTRL+ALT+E -  expand alias
+
+tac # cat with reverse lines
